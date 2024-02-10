@@ -14,8 +14,8 @@ class ApiKey(APIKeyQuery):
 
     def authenticate(self, request, key):
         try:
-            return CustomUser.objects.get(key=key)
-        except CustomUser.DoesNotExist:
+            return Token.objects.get(key=key).user
+        except Token.DoesNotExist:
             pass
 
 
